@@ -1,20 +1,39 @@
 package org.stream.practice;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class StreamQuestions3 {
     public static void main(String[] args) {
 
         // Given a list of integers, find out all the even numbers exist in the list using Stream functions?
-        List<Integer> num=List.of(1,2,3,4,56,77,12,23,13,4,56,67,78,10);
+        List<Integer> num=List.of(1,2,3,4,56,77,12,23,13,1,13,4,56,67,78,10);
 
         List<Integer> collect = num.stream().filter(x -> x % 2 == 0).collect(Collectors.toList());
         System.out.println("even numbers exist in the list ");
         System.out.println( collect);
-//Given a list of integers, find out all the numbers starting with 1 using Stream functions?
 
+
+        //Given a list of integers, find out all the numbers starting with 1 using Stream functions?
         List<Integer> list = num.stream().map(s -> s + "").filter(n -> n.startsWith("1")).map(i -> Integer.parseInt(i)).toList();
         System.out.println(list);
+
+       // How to find duplicate elements in a given integers list in java using Stream functions?
+        Set<Integer> s= new HashSet<>();
+        List<Integer> list1 = num.stream().filter(m -> !s.add(m)).toList();
+        System.out.println("Find duplicate elements in a given integers list in java using Stream functions");
+        System.out.println(list1);
+
+
+        //Given the list of integers, find the first element of the list using Stream functions?
+        num.stream().findFirst().ifPresent(System.out::println);
+
+
+        //Given a list of integers, find the total number of elements present in the list using Stream functions?
+        long count = num.stream().count();
+        System.out.println("Find the total number of elements present in the list using Stream functions?");
+        System.out.println(count);
     }
 }
