@@ -1,8 +1,10 @@
 package org.stream.practice;
 
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamQuestions3 {
@@ -35,5 +37,33 @@ public class StreamQuestions3 {
         long count = num.stream().count();
         System.out.println("Find the total number of elements present in the list using Stream functions?");
         System.out.println(count);
+
+        //Given a list of integers, find the maximum value element present in it using Stream functions?
+        num.stream().max((a,b)->a.compareTo(b)).ifPresent(System.out::println);
+
+//        Given a String, find the first non-repeated character in it using Stream functions?
+
+        String str="this is string";
+        Character c1 = str.chars().mapToObj(c -> Character.toLowerCase(Character.valueOf((char) c)))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(en -> en.getValue() == 1L)
+                .map(ky -> ky.getKey())
+                .findFirst()
+                .get();
+        System.out.println(c1);
+
+
+        //Given a String, find the first repeated character in it using Stream functions
+        Character c2 = str.chars().mapToObj(c -> Character.toLowerCase(Character.valueOf((char) c)))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(f -> f.getValue() > 1L)
+                .map(c -> c.getKey())
+                .findFirst()
+                .get();
+        System.out.println(c2);
     }
 }
