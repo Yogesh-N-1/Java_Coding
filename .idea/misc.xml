@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/Generics/pom.xml" />
         <option value="$PROJECT_DIR$/Reflaction/pom.xml" />
+        <option value="$PROJECT_DIR$/Custom-Annotation/pom.xml" />
       </list>
     </option>
   </component>

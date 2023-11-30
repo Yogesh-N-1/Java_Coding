@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Reflaction" />
         <module name="Generics" />
+        <module name="Custom-Annotation" />
       </profile>
     </annotationProcessing>
   </component>
